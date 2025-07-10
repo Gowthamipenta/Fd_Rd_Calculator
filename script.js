@@ -13,13 +13,19 @@ document.getElementById('rate').oninput = function () {
 
 ['years', 'months', 'days'].forEach(id => {
   document.getElementById(id).oninput = function () {
-    document.getElementById(`${id.slice(0, 4)}Label`).textContent = `${this.value} ${id.charAt(0).toUpperCase() + id.slice(1)}`;
+    const label = document.getElementById(`${id.slice(0, 3)}Label`);
+    label.textContent = `${this.value} ${id.charAt(0).toUpperCase() + id.slice(1)}`;
+    calculate();
   };
 });
 
+document.getElementById('senior').onchange = calculate;
+document.getElementById('amount').oninput = calculate;
+document.getElementById('rate').oninput = calculate;
+
 function calculate() {
-  const principal = parseFloat(document.getElementById('amount').value);
-  let rate = parseFloat(document.getElementById('rate').value);
+  const principal = parseFloat(document.getElementById('amount').value) || 0;
+  let rate = parseFloat(document.getElementById('rate').value) || 0;
   const years = parseInt(document.getElementById('years').value);
   const months = parseInt(document.getElementById('months').value);
   const days = parseInt(document.getElementById('days').value);
@@ -32,8 +38,8 @@ function calculate() {
   let investment = 0;
 
   if (activeTab === 'fd') {
-    maturity = principal * Math.pow(1 + rate / 100, timeInYears);
     investment = principal;
+    maturity = principal * Math.pow(1 + rate / 100, timeInYears);
   } else {
     const monthly = principal;
     const n = Math.round(timeInYears * 12);
