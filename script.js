@@ -38,13 +38,13 @@ function calculate() {
     maturity = monthly * ((Math.pow(1 + rate / 400, n) - 1) / (Math.pow(1 + rate / 400, 1) - 1));
   }
 
-  const profit = maturity - investment;
-  const profitPercent = (profit / investment) * 100;
+  const interestEarned = maturity - investment;
+  const interestEarnedPercent = (interestEarned / investment) * 100;
 
   document.getElementById('result').innerHTML = `
     <strong>Investment:</strong> ₹${investment.toFixed(2)}<br>
     <strong>Maturity:</strong> ₹${maturity.toFixed(2)}<br>
-    <strong>Profit:</strong> ₹${profit.toFixed(2)} (${profitPercent.toFixed(2)}%)
+    <strong>Interest Earned:</strong> ₹${interestEarned.toFixed(2)} (${interestEarnedPercent.toFixed(2)}%)
   `;
 }
 
