@@ -7,31 +7,22 @@ function switchTab(tab) {
   calculate();
 }
 
-document.getElementById('rate').oninput = function () {
-  document.getElementById('rateLabel').textContent = this.value;
-};
-
-['years', 'months', 'days'].forEach(id => {
-  document.getElementById(id).oninput = function () {
-    const label = document.getElementById(`${id.slice(0, 3)}Label`);
-    label.textContent = `${this.value} ${id.charAt(0).toUpperCase() + id.slice(1)}`;
-    calculate();
-  };
-});
-
-document.getElementById('senior').onchange = calculate;
-document.getElementById('amount').oninput = calculate;
-document.getElementById('rate').oninput = calculate;
+function updateTenureLabel() {
+  const months = parseInt(document.getElementById('tenure').value);
+  const years = Math.floor(months / 12);
+  const remMonths = months % 12;
+  const label = `${months} Month${months > 1 ? 's' : ''} (${years} Year${years !== 1 ? 's' : ''}${remMonths > 0 ? ` ${remMonths} Month${remMonths > 1 ? 's' : ''}` : ''})`;
+  document.getElementById('tenureLabel').textContent = label;
+}
 
 function calculate() {
+  updateTenureLabel();
   const principal = parseFloat(document.getElementById('amount').value) || 0;
   let rate = parseFloat(document.getElementById('rate').value) || 0;
-  const years = parseInt(document.getElementById('years').value);
-  const months = parseInt(document.getElementById('months').value);
-  const days = parseInt(document.getElementById('days').value);
+  const tenureMonths = parseInt(document.getElementById('tenure').value);
   const isSenior = document.getElementById('senior').checked;
 
-  const timeInYears = years + months / 12 + days / 365;
+  const timeInYears = tenureMonths / 12;
   if (isSenior) rate += 0.5;
 
   let maturity = 0;
@@ -42,7 +33,7 @@ function calculate() {
     maturity = principal * Math.pow(1 + rate / 100, timeInYears);
   } else {
     const monthly = principal;
-    const n = Math.round(timeInYears * 12);
+    const n = tenureMonths;
     investment = monthly * n;
     maturity = monthly * ((Math.pow(1 + rate / 400, n) - 1) / (Math.pow(1 + rate / 400, 1) - 1));
   }
@@ -56,5 +47,10 @@ function calculate() {
     <strong>Profit:</strong> ₹${profit.toFixed(2)} (${profitPercent.toFixed(2)}%)
   `;
 }
+
+['amount', 'rate', 'tenure'].forEach(id => {
+  document.getElementById(id).addEventListener('input', calculate);
+});
+document.getElementById('senior').addEventListener('change', calculate);
 
 calculate();
