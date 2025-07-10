@@ -1,92 +1,73 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f5f8ff;
-  margin: 0;
-  padding: 20px;
+  margin: 0; padding: 20px;
 }
-
 .container {
-  max-width: 600px;
+  max-width: 500px;
   margin: auto;
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
-
 h1 {
-  color: #0f3cc9;
   text-align: center;
+  color: #0f3cc9;
+  margin-bottom: 20px;
 }
-
 .tabs {
   display: flex;
   margin-bottom: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.tab {
-  flex: 1;
-  padding: 12px;
   background: #e0e8f7;
-  color: #0f3cc9;
+  border-radius: 8px;
+}
+.tab {
+  flex: 1; padding: 12px;
+  background: transparent;
   border: none;
+  color: #0f3cc9;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: bold;
   transition: background 0.3s;
 }
-
 .tab.active {
   background: #0f3cc9;
-  color: white;
+  color: #fff;
 }
-
 .input-group {
   margin-bottom: 18px;
 }
-
-label {
+.input-group label {
   display: block;
   margin-bottom: 6px;
+  color: #333;
   font-weight: 500;
 }
-
-input[type="number"],
-input[type="range"] {
+input[type="number"], input[type="range"] {
   width: 100%;
-  padding: 6px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
 }
-
-input[type="checkbox"] {
-  transform: scale(1.2);
-  margin-right: 6px;
+input[type="range"] {
+  accent-color: #0f3cc9;
+  margin-top: 6px;
 }
-
 button {
   width: 100%;
   padding: 12px;
   background: #00b386;
-  color: white;
-  font-size: 1rem;
+  color: #fff;
   border: none;
   border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 15px;
 }
-
 button:hover {
-  background: #009f75;
+  background: #00a174;
 }
-
 #result {
-  margin-top: 20px;
-  padding: 15px;
   background: #eef7f3;
   border: 1px solid #b6e2d4;
+  padding: 15px;
   border-radius: 8px;
-  font-size: 1rem;
+  margin-top: 20px;
 }
