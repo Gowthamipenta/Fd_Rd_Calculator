@@ -1,53 +1,92 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f1f1f1;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f8ff;
   margin: 0;
   padding: 20px;
 }
 
 .container {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
-  background: #fff;
+  background: white;
   padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #ccc;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  color: #0f3cc9;
+  text-align: center;
 }
 
 .tabs {
   display: flex;
   margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .tab {
   flex: 1;
-  padding: 10px;
-  background: #ddd;
+  padding: 12px;
+  background: #e0e8f7;
+  color: #0f3cc9;
   border: none;
   cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
 .tab.active {
-  background: #007BFF;
+  background: #0f3cc9;
   color: white;
 }
 
 .input-group {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  font-weight: 500;
 }
 
-input[type="number"], input[type="range"] {
+input[type="number"],
+input[type="range"] {
   width: 100%;
+  padding: 6px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 6px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #00b386;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover {
+  background: #009f75;
 }
 
 #result {
   margin-top: 20px;
   padding: 15px;
-  background: #f9f9f9;
-  border: 1px solid #ccc;
+  background: #eef7f3;
+  border: 1px solid #b6e2d4;
+  border-radius: 8px;
+  font-size: 1rem;
 }
