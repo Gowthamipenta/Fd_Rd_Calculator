@@ -1,4 +1,43 @@
-<div class="input-group">
-  <label>Rate of interest (%): <span id="rateLabel">6.5</span></label>
-  <input type="range" min="1" max="12" step="0.1" id="rate" value="6.5">
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FD & RD Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>FD & RD Calculator</h1>
+    <div class="tabs">
+      <button onclick="switchTab('fd')" class="tab active">Fixed Deposit</button>
+      <button onclick="switchTab('rd')" class="tab">Recurring Deposit</button>
+    </div>
+
+    <div id="calculator">
+      <div class="input-group">
+        <label>Principal Amount (₹):</label>
+        <input type="number" id="amount" value="100000" />
+      </div>
+
+      <div class="input-group">
+        <label>Interest Rate (%): <span id="rateLabel">6.5</span></label>
+        <input type="range" min="1" max="12" step="0.1" id="rate" value="6.5" />
+      </div>
+
+      <div class="input-group">
+        <label>Tenure (in months): <span id="tenureLabel">12 Months (1 Year)</span></label>
+        <input type="range" min="1" max="120" value="12" id="tenure" />
+      </div>
+
+      <div class="input-group">
+        <label><input type="checkbox" id="senior" /> Senior Citizen</label>
+      </div>
+
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
